@@ -12,6 +12,15 @@ public class PetController {
 		
 		view.btnSave.setOnAction(this::save);
 		view.btnDelete.setOnAction(this::delete);
+		// new event
+		view.btnLoad.setOnAction( event -> {
+			model.loadPets();
+			updateView(model.getPet());
+			
+		});
+		view.btnSave1.setOnAction( event -> {
+			model.savePets();
+		});
 		
 		view.btnDelete.disableProperty().bind(model.petProperty().isNull());
 		view.btnSave.disableProperty().bind(view.txtName.textProperty().isEmpty());
@@ -19,11 +28,13 @@ public class PetController {
 	private void save(ActionEvent e) {
 		week3.MVC.pet.Pet1.Species species = view.cmbSpecies.getValue();
 		week3.MVC.pet.Pet1.Gender gender = view.cmbGender.getValue();
-		String name = view.txtName.getText();
+		String name = view.txtName.getText(); // string value should go to pets
 		if (species != null && gender != null && name != null && name.length() > 0) {
 			model.savePet(species, gender, name);
+			//model.addPet(name);
 			updateView(model.getPet());
 		}
+		
 	}
 	
 	private void delete(ActionEvent e) {
@@ -44,5 +55,6 @@ public class PetController {
 			view.lblDataGender.setText("");
 		}
 	}
+	
 
 }
