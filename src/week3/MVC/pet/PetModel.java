@@ -81,7 +81,7 @@ public class PetModel {
 		String name = attributes[3];
 		Pet1 pet = new Pet1(ID, species, gender, name);
 		//pet.setName(name); was just testing something
-		pets.add(pet);
+		//pets.add(pet);
 		return pet;
 	}
 	// for saving
