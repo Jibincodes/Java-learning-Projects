@@ -1,4 +1,4 @@
-package week3.MVC.pet;
+ package week3.MVC.pet;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,8 +15,11 @@ public class Pet extends Application {
 		view = new PetView(stage, model);
 		controller = new PetController(model, view);
 		view.start();
-
 	}
+	/*@Override
+	public void init() {
+		 Initialization - but wasnt needed
+	}*/
 
 	public static void main(String[] args) {
 		launch();
