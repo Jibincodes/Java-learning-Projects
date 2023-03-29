@@ -11,7 +11,10 @@ public class Pet1 {
 	private Species species;
 	private Gender gender;
 	private String name;
-
+	
+    Pet1(int ID) {
+		this.ID = ID;
+	}
 	// Class method to get next available ID
 	private static int getNextID() {
 		return ++highestID;
@@ -24,7 +27,19 @@ public class Pet1 {
 		this.name = name;
 	}
 	
+	public Pet1(int ID, Species species, Gender gender, String name) {
+		this.ID = ID;
+		this.species = species;
+		this.gender = gender;
+		this.name = name;
+	}
+	
+	
 	// --- Getters and Setters ---
+	
+	public int getID() {
+		return ID;
+	}
 
 	public Species getSpecies() {
 		return species;
@@ -48,10 +63,6 @@ public class Pet1 {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getID() {
-		return ID;
 	}
 
 }
