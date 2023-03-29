@@ -29,6 +29,8 @@ public class PetView {
 	Label lblDataGender = new Label();
 	Button btnSave = new Button("Save");
 	Button btnDelete = new Button("Delete");
+	Button btnLoad = new Button("Load pets"); // new file saving
+	Button btnSave1 = new Button("Save pets");
 	
 	
 
@@ -80,6 +82,9 @@ public class PetView {
 		pane.setId("controlArea");
 		pane.add(btnSave, 1, 0);
 		pane.add(btnDelete, 0, 0);
+		pane.add(btnLoad, 2, 0); // new change for file saving
+		pane.add(btnSave1, 3, 0);
+		
 		
 		return pane;
 	}
