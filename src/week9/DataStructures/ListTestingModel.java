@@ -8,11 +8,12 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-
+// doing a branch test only
+// please ignore this
 public class ListTestingModel {
 	//protected enum LIST_TYPES {ArrayList, LinkedList, TreeSet, HashSet};
 	protected enum COLLECTION_TYPES {ArrayList, LinkedList, HashSet, TreeSet};
-	protected enum WHERE_CHOICES {Start, Middle, End};
+	protected enum WHERE_CHOICES { Middle, End};
 	
 	/**
 	 * Run the defined test, returning the total elapsed time in seconds
