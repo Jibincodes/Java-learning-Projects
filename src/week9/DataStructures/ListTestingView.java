@@ -1,5 +1,6 @@
 package week9.DataStructures;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,6 +22,9 @@ public class ListTestingView {
 	//---------------------------------
 	private ListView<SampleData> listView;
     private TextField txtSelectedObject;
+    
+    // new change
+    private ObservableList<SampleData> data;
     
     //---------------
 
@@ -67,31 +71,58 @@ public class ListTestingView {
 		grid.addRow(1, lblListType, cmbListType);
 		grid.addRow(2, lblWhereToAdd, cmbWhere);
 		
-		VBox root = new VBox(grid, btnGo,btnGo1, lblResult, lblResult1);
-		root.getStyleClass().add("vbox");
+		VBox root = new VBox();
+        root.getChildren().addAll(grid, btnGo, btnGo1, lblResult, lblResult1, listView, txtSelectedObject);
+        root.getStyleClass().add("vbox");
 
         Scene scene = new Scene(root);
 		//scene.getStylesheets().add(
 				//getClass().getResource("styles.css").toExternalForm());        
         stage.setScene(scene);
         stage.setTitle("List testing");
+        
+        //new change
+        data = FXCollections.observableArrayList();
+        generateSampleData(DATA_AMOUNTS[0]); // Generate sample data with default amount
+        listView.setItems(data);
 	}
 	//--------------------------------
 	public SampleData getSelectedObject() {
         return listView.getSelectionModel().getSelectedItem();
     }
-	public void populateListView(ObservableList<SampleData> data) {
-        listView.setItems(data);
-    }
-    //----------------------------------------
-	public VBox getRootContainer() {
-        VBox container = new VBox();
-        container.getChildren().addAll(listView, txtSelectedObject);
-        return container;
-    }
+	//public void populateListView(ObservableList<SampleData> data) {
+     //   listView.setItems(data);
+   // }
+	public void generateSampleData(int amount) {
+	    data.clear(); // Clear the existing data
 
+	    //for (String firstName : SampleData.FIRSTNAMES) {
+	       // SampleData sample = new SampleData();
+	       // sample.setName(firstName);
+	       // data.add(sample);
+	  //  }
+	    for (int i = 0; i < amount; i++) {
+	        SampleData sample = new SampleData();
+	        data.add(sample);
+	    }
+	}
+	/*public void generateSampleData(int amount) {
+	    data.clear(); // Clear the existing data
+
+	    for (int i = 0; i < amount; i++) {
+	        SampleData sample = new SampleData();
+	        String firstName = SampleData.FIRSTNAMES[i % SampleData.FIRSTNAMES.length];
+	        sample.setName(firstName);
+	        data.add(sample);
+	    }
+
+	    listView.setItems(data); // Set the updated data to the ListView
+	}*/
+
+    //----------------------------------------
 	public void start() {
 		stage.show();
 	}
 
 }
+
