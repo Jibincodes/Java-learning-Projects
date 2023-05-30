@@ -1,14 +1,17 @@
 package week9.DataStructures;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-
+// doing a branch test only
+// please ignore this
 public class ListTestingModel {
 	//protected enum LIST_TYPES {ArrayList, LinkedList, TreeSet, HashSet};
 	protected enum COLLECTION_TYPES {ArrayList, LinkedList, HashSet, TreeSet};
@@ -25,7 +28,7 @@ public class ListTestingModel {
 		// Create the data objects in an array
 		SampleData[] data = createData(amountOfData);		
 		//List<SampleData> list = createList(amountOfData, listType);
-		Collection<SampleData> collection = createCollection(collectionType);
+		Collection<SampleData> collection = createCollection(amountOfData,collectionType);
 		
 		// Perform the test
 		long startTime = System.currentTimeMillis();
@@ -34,7 +37,45 @@ public class ListTestingModel {
 		long endTime = System.currentTimeMillis();
 		return (endTime - startTime) / 1000.0f;
 	}
+	//------------------------------------------------------------------------------------------------------
+	/*public float runFindTest(int amountOfData, COLLECTION_TYPES collectionType, int selectedObjects) {
+        Collection<SampleData> collection = createCollection(amountOfData, collectionType);
+        
+        SampleData[] data = createData(amountOfData);
+        addDataToCollection(data, collection);
+        
+        Random random = new Random();
+        long startTime = System.currentTimeMillis();
+        
+        for (int i = 0; i < selectedObjects; i++) {
+            SampleData randomObject = data[random.nextInt(amountOfData)];
+            boolean containsObject = collection.contains(randomObject);
+            System.out.println("Object #" + (i + 1) + ": " + randomObject + " - Contains: " + containsObject);
+        }
+        
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime) / 1000.0f;
+    }*/
+	public float runFindTest(int amountOfData, COLLECTION_TYPES collectionType, SampleData selectedObject) {
+	    // Create the data objects
+	    SampleData[] data = createData(amountOfData);
+	    Collection<SampleData> collection = createCollection(amountOfData, collectionType);
 
+	    // Perform the find test
+	    addDataToCollection(data, collection, WHERE_CHOICES.Start); // Add data to the collection
+	    long startTime = System.currentTimeMillis();
+	    boolean found = findSelectedObjectInCollection(selectedObject, collection);
+	    long endTime = System.currentTimeMillis();
+
+	    return (endTime - startTime) / 1000.0f;
+	}
+
+	
+	private boolean findSelectedObjectInCollection(SampleData selectedObject, Collection<SampleData> collection) {
+	    return collection.contains(selectedObject);
+	}
+
+//-----------------------------------------------------------------------------------------------------------------------------
 	private SampleData[] createData(Integer amountOfData) {
 		SampleData[] data = new SampleData[amountOfData];
 		for (int i = 0; i < amountOfData; i++) data[i] = new SampleData();
@@ -65,7 +106,7 @@ public class ListTestingModel {
 			list.add(index, element);
 		}
 	}*/
-    private Collection<SampleData> createCollection(COLLECTION_TYPES collectionType) {
+    private Collection<SampleData> createCollection(int amountOfData, COLLECTION_TYPES collectionType) {
         // Create an empty collection of the desired type
         Collection<SampleData> collection = null;
         if (collectionType == COLLECTION_TYPES.ArrayList)
@@ -95,4 +136,9 @@ public class ListTestingModel {
             }
         }
     }
+    //--------------------------------------------------------------------------------------------------------------------
+    private void addDataToCollection(SampleData[] data, Collection<SampleData> collection) {
+        collection.addAll(Arrays.asList(data));
+    }
+    //----------------------------------------------------------------------------------------------------------------
 }
