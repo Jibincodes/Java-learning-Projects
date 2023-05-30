@@ -5,6 +5,10 @@ import java.util.TreeSet;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+//=======================================================================================
+/*The program has been extended to add Treeset and Hashset. Please also note you need to select an object from the list given to get result of speed in finding an object*/
+
+//======================================================================
 
 // These programs are extended as per as the question
 public class ListTesting extends Application {
@@ -23,21 +27,6 @@ public class ListTesting extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-		// just testing 
-		/*HashSet<SampleData> hashSet = new HashSet<>();
-        TreeSet<SampleData> treeSet = new TreeSet<>();
-
-        SampleData data1 = new SampleData();
-        SampleData data2 = new SampleData();
-
-        hashSet.add(data1);
-        hashSet.add(data2);
-
-        treeSet.add(data1);
-        treeSet.add(data2);
-
-        System.out.println("HashSet size: " + hashSet.size()); // Output: 2
-        System.out.println("TreeSet size: " + treeSet.size()); // Output: 2*/
 
 	}
 

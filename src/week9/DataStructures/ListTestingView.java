@@ -19,15 +19,10 @@ import week9.DataStructures.ListTestingModel.WHERE_CHOICES;;
 public class ListTestingView {
 	private Stage stage;
 	private ListTestingModel model;
-	//---------------------------------
 	private ListView<SampleData> listView;
     private TextField txtSelectedObject;
-    
-    // new change
     private ObservableList<SampleData> data;
     
-    //---------------
-
 	protected final Integer[] DATA_AMOUNTS = {10000,30000,100000,300000,1000000};
 
 	private Label lblNumElements = new Label("Amount of data");
@@ -37,7 +32,7 @@ public class ListTestingView {
 	private Label lblWhereToAdd = new Label("Add elements at");
 	protected ComboBox<WHERE_CHOICES> cmbWhere = new ComboBox<>();
 	protected Button btnGo = new Button("Run test");
-	protected Button btnGo1 = new Button("Run Find test");
+	//protected Button btnGo1 = new Button("Run Find test");
 	protected Label lblResult = new Label();
 	protected Label lblResult1 = new Label();
 	
@@ -72,54 +67,30 @@ public class ListTestingView {
 		grid.addRow(2, lblWhereToAdd, cmbWhere);
 		
 		VBox root = new VBox();
-        root.getChildren().addAll(grid, btnGo, btnGo1, lblResult, lblResult1, listView, txtSelectedObject);
+        root.getChildren().addAll(grid, btnGo, lblResult, lblResult1, listView, txtSelectedObject);
         root.getStyleClass().add("vbox");
 
-        Scene scene = new Scene(root);
-		//scene.getStylesheets().add(
-				//getClass().getResource("styles.css").toExternalForm());        
+        Scene scene = new Scene(root);       
         stage.setScene(scene);
         stage.setTitle("List testing");
         
-        //new change
+        //new changes
         data = FXCollections.observableArrayList();
-        generateSampleData(DATA_AMOUNTS[0]); // Generate sample data with default amount
+        generateSampleData(DATA_AMOUNTS[0]); // Generating sample data with default amount
         listView.setItems(data);
 	}
-	//--------------------------------
 	public SampleData getSelectedObject() {
         return listView.getSelectionModel().getSelectedItem();
     }
-	//public void populateListView(ObservableList<SampleData> data) {
-     //   listView.setItems(data);
-   // }
+	
 	public void generateSampleData(int amount) {
 	    data.clear(); // Clear the existing data
-
-	    //for (String firstName : SampleData.FIRSTNAMES) {
-	       // SampleData sample = new SampleData();
-	       // sample.setName(firstName);
-	       // data.add(sample);
-	  //  }
 	    for (int i = 0; i < amount; i++) {
 	        SampleData sample = new SampleData();
 	        data.add(sample);
 	    }
 	}
-	/*public void generateSampleData(int amount) {
-	    data.clear(); // Clear the existing data
-
-	    for (int i = 0; i < amount; i++) {
-	        SampleData sample = new SampleData();
-	        String firstName = SampleData.FIRSTNAMES[i % SampleData.FIRSTNAMES.length];
-	        sample.setName(firstName);
-	        data.add(sample);
-	    }
-
-	    listView.setItems(data); // Set the updated data to the ListView
-	}*/
-
-    //----------------------------------------
+	
 	public void start() {
 		stage.show();
 	}
