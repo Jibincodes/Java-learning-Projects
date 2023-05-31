@@ -18,7 +18,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
+//----------------------------------------
+// A few task like adding new customer and product are done manually, as the main goal of the program is to focus on inheritance
+//--------------------------------------
 public class ArtShop extends Application {
 	private Stage stage;
 	private ArrayList<Customer> customers = new ArrayList<>();
@@ -42,12 +44,12 @@ public class ArtShop extends Application {
         products.add(new Painting("Painting 2", "Artist 2- Johnny", 100, "Watercolor"));
         products.add(new Sculpture("Sculpture 1", "Artist 3- Luke", 200, "Marble"));
 
-        // Creating the labels required
+        
         Label customerLabel = new Label("Customers");
         customerListView = new ListView<>(customerObservableList);
         customerListView.setPrefWidth(200);
         customerListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        //making them visible in the interface
+        //making them visible
         customerObservableList.addAll(customers);
         productObservableList.addAll(products);
         //===========================================
@@ -123,7 +125,7 @@ public class ArtShop extends Application {
 	private void addCustomer() {
 	    // I could have used the dialog
 	    // manually done just to demonstrate the process
-		// This  is usually done uping input infiedls but here the focus is on inheritance, so i just did it manually
+		// This  is usually done using input fields but here the focus is on inheritance, so i just did it manually
 	    Customer newCustomer = new Customer("New Customer", "newcustomer@example.com", "Address", "Phone");
 	    customers.add(newCustomer);
 	    customerObservableList.add(newCustomer);
@@ -158,7 +160,7 @@ public class ArtShop extends Application {
 	    quantityDialog.showAndWait().ifPresent(quantity -> {
 	        double totalPrice = selectedProduct.getPrice() * quantity;
 
-	        // Confirmation of the transaction with the user
+	        // Confirmation with user
 	        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
 	        confirmationAlert.setTitle("Make Transaction");
 	        confirmationAlert.setHeaderText("Confirm Transaction");
