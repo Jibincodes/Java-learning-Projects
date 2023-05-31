@@ -2,7 +2,9 @@
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-
+//------------------------------------------------------------
+//Task of week 3 and 4/5 are done here
+//-----------------------------------------------------------
 
 public class Pet extends Application {
 	private PetView view;
