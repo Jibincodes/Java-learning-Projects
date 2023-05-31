@@ -1,7 +1,9 @@
 package week10.SinglyLinkedList;
 
 import week10.SinglyLinkedList.ListException.ListErrorCode;
-
+//----------------------------------
+//Extended as per the question
+//---------------------
 
 
 public class SinglyLinkedList<T> {
