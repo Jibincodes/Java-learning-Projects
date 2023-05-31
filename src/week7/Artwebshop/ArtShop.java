@@ -20,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 //----------------------------------------
 // A few task like adding new customer and product are done manually, as the main goal of the program is to focus on inheritance
+// 2 DIAGRAMS ARE ADDED, ONE SHOWING THE UML  CLASS DIAGRAM AND OTHER JUST THE INHERITANCE HAPPENING
 //--------------------------------------
 public class ArtShop extends Application {
 	private Stage stage;
