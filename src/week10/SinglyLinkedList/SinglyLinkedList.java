@@ -13,7 +13,7 @@ public class SinglyLinkedList<T> {
 
 	public void add(int position, T o) throws ListException {
 		ListElement<T> e = new ListElement<T>(o);
-		if (position == 0) { // special handling for first position
+		if (position == 0) { 
 			e.next = head;
 			head = e;
 		} else if (position > 0) {
@@ -22,7 +22,6 @@ public class SinglyLinkedList<T> {
 				if (cursor == null) throw new ListException(ListErrorCode.PositionTooSmall);
 				cursor = cursor.next;
 			}
-			// insert *after* element pointed to by cursor
 			if (cursor == null) throw new ListException(ListErrorCode.PositionTooLarge);
 			e.next = cursor.next;
 			cursor.next = e;
@@ -45,7 +44,7 @@ public class SinglyLinkedList<T> {
 	public T remove(int position) throws ListException {
 		T o;
 		ListElement<T> cursor = head;
-		if (position == 0) { // special handling for first position
+		if (position == 0) { 
 			if (cursor == null) throw new ListException(ListErrorCode.PositionTooLarge);
 			o = cursor.getData();
 			head = cursor.next;
@@ -55,9 +54,7 @@ public class SinglyLinkedList<T> {
 				cursor = cursor.next;
 			}
 			if (cursor == null) throw new ListException(ListErrorCode.PositionTooLarge);
-			// retain data to return
 			o = cursor.next.getData();
-			// delete element *after* cursor
 			cursor.next = cursor.next.next;
 		} else {
 			throw new ListException(ListErrorCode.PositionTooSmall);
