@@ -16,10 +16,7 @@ public class Pet extends Application {
 		controller = new PetController(model, view);
 		view.start();
 	}
-	/*@Override
-	public void init() {
-		 Initialization - but wasnt needed
-	}*/
+	
 
 	public static void main(String[] args) {
 		launch();
